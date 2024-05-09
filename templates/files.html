@@ -20,6 +20,30 @@
             color:#212121
         }
         hr { color: black; background-color: black; height: 3px; }
+
+        @media only screen and (max-width: 600px) {
+            #image{
+                width:80%;
+
+            }
+            #b{
+                width:500%; 
+            }
+            .form-select{
+                width: 20vh;
+                margin: 20px;
+
+            }
+        }
+
+        @media screen and (max-width: 900px) and (min-width: 600px){
+            #padd{
+                width:20px;
+            }
+            #b{
+                width:120px;
+            }
+        }
     </style>
 
 </head>
@@ -30,16 +54,15 @@
             <div class="col-4">
                 <img src="..\static\logo.png" alt="Website Logo" width="60%">
             </div>
-            <div class="col-4"></div>
+            <div id="padd" class="col-4"></div>
             <div id="b" class="col-1">
-                
-                <a id="black" class="btn btn-secondary rounded-pill" href="index.html" role="button"> <i class="fa-solid fa-language"></i> Text</a>
+                <a id="black" class="btn btn-secondary rounded-pill" href= "{{url_for('index')}}" role="button"> <i class="fa-solid fa-language"></i> Text</a>
             </div>
             <div id="b" class="col-1">
-                <a id="black" class="btn btn-secondary rounded-pill" href="audio.html" role="button" style="width: 110%;"> <i class="fa-solid fa-music"></i> Audio</a>
+                <a id="black" class="btn btn-secondary rounded-pill" href="{{url_for('audio')}}" role="button" style="width:100px"> <i class="fa-solid fa-music"></i> Audio</a>
             </div>
             <div id="b" class="col-1">
-                <a id="black" class="btn btn-secondary rounded-pill" href="files.html" role="button"><i class="fa-regular fa-file"></i> Files</a>
+                <a id="black" class="btn btn-secondary rounded-pill" href="{{url_for('files')}}" role="button"><i class="fa-regular fa-file"></i> Files</a>
             </div>
         </div>
     </div>
@@ -48,20 +71,31 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-2">
-                <select class="form-select rounded-pill" aria-label="Default select example" style="background-color: #212121; color: #FFFFF0;">
+                <form method="post" action="/select_file" enctype="multipart/form-data">
+                <select name="Input" class="form-select rounded-pill" aria-label="Default select example" style="background-color: #212121; color: #FFFFF0;">
                     <option selected>Input Language</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="chinese">chinese</option>
                 </select>
             </div>
             <div class="col-2"></div>
             <div class="col-2">
-                <select class="form-select rounded-pill" aria-label="Default select example" style="background-color: #212121; color: #FFFFF0;">
+                <select name="Output" class="form-select rounded-pill" aria-label="Default select example" style="background-color: #212121; color: #FFFFF0;">
                     <option selected>Output Language</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Spanish">Spanish</option>
+                    <option value="French">French</option>
+                    <option value="German">German</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="chinese">chinese</option>
                 </select>
             </div>
         </div>
@@ -73,14 +107,14 @@
                     <i class="fa-solid fa-cloud-arrow-up fa-8x" ></i>
                     <h5>Upload your file</h5>
                     <h6>(.pdf, .docx, .mp3)</h6>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
             </div>
             <div class="col-2"></div>
             <div class="col-5" style="align-items: center; display: flex; justify-content: center; background-color:#a8a28a; border-radius: 5%; height: 400px;">
                 <button class="btn rounded-pill">
-                    <a href="/images/myw3schoolsimage.jpg" download style="color: #212121;"><i class="fa-solid fa-cloud-arrow-down fa-8x"></i></a>
-                    <h5>Download</h5>
+                    <a href="#" download style="color: #212121;"><i class="fa-solid fa-cloud-arrow-down fa-8x"></i></a>
+                    <h5>{{Output}}</h5>
                 </button>
                 
             </div>
@@ -92,6 +126,7 @@
             </div>
         
         </div>
+    </form>
     </div>
 </body>
 </html>
